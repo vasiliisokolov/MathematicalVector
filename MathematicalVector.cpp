@@ -6,7 +6,7 @@ struct vec
     int x = 0;
     int y = 0;
     
-    double length = sqrt(pow(x, 2) + pow(y, 2));
+    double length = 0;
 };
 
 enum operations
@@ -62,12 +62,16 @@ void vec_add()
     vec first, second;
     std::cout << "Enter coordinates of first vector(x y):";
     std::cin >> first.x >> first.y;
+    first.length = sqrt(pow(first.x, 2) + pow(first.y, 2));
+    //std::cout << first.length;
     std::cout << "Enter coordinates of second vector(x y):";
     std::cin >> second.x >> second.y;
-
+    second.length = sqrt(pow(second.x, 2) + pow(second.y, 2));
+    //std::cout << second.length;
     double cos = ((first.x * second.x) + (first.y * second.y)) / (first.length * second.length);
     //double angle = acos(((first.x * second.x) + (first.y * second.y)) / (first.length * second.length));
     double result = sqrt(pow(first.length, 2) + pow(second.length, 2) - (2 * first.length * second.length * cos));
+    std::cout << "Result is " << result << std::endl;
 }
 
 void vec_subtract()
